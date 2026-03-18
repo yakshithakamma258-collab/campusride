@@ -12,7 +12,9 @@ const login = async () => {
 
 try{
 
-const res = await axios.post("https://campusride-1.onrender.com/api/bikes",{
+const res = await axios.post(
+"https://campusride-1.onrender.com/api/auth/login",  // ✅ FIXED
+{
 email,
 password
 });
@@ -21,8 +23,6 @@ alert("Login successful");
 
 localStorage.setItem("userEmail", res.data.user.email);
 localStorage.setItem("userName", res.data.user.name);
-
-
 
 const role = res.data.user.role;
 
@@ -44,7 +44,9 @@ return(
 
 <div className="container-box col-md-4 mx-auto text-center">
 
-<h2 className="dashboard-title"><FaUser/> CampusRide Login</h2>
+<h2 className="dashboard-title">
+<FaUser/> CampusRide Login
+</h2>
 
 <input
 className="form-control"
@@ -65,6 +67,16 @@ onChange={(e)=>setPassword(e.target.value)}
 
 <button className="btn btn-success w-100" onClick={login}>
 Login
+</button>
+
+<br/><br/>
+
+{/* ✅ SIGNUP BUTTON ADDED */}
+<button 
+className="btn btn-primary w-100"
+onClick={()=>window.location.href="/signup"}
+>
+Create Account
 </button>
 
 </div>
