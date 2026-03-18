@@ -1,73 +1,66 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "../style.css";
 
-function Bookingpage(){
+function BookingPage() {
 
-const [bookings,setBookings] = useState([]);
+  const [bookings, setBookings] = useState([]);
 
-useEffect(()=>{
-getBookings();
-},[]);
+  useEffect(() => {
+    getBookings();
+  }, []);
 
-const getBookings = async ()=>{
+  const getBookings = async () => {
+    try {
+      const res = await axios.get("https://campusride-1.onrender.com/api/bookings");
+      setBookings(res.data);
+    } catch (err) {
+      console.log(err);
+      alert("Error loading bookings");
+    }
+  };
 
-const res = await axios.get("https://campusride-1.onrender.com/api/bikes");
+  const deleteBooking = async (id) => {
+    try {
+      await axios.delete(`https://campusride-1.onrender.com/api/bookings/${id}`);
+      alert("Booking deleted");
+      getBookings();
+    } catch (err) {
+      console.log(err);
+      alert("Delete failed");
+    }
+  };
 
-setBookings(res.data);
+  return (
+    <div className="booking-container">
 
-};
+      <h1>My Bookings</h1>
 
-const deleteBooking = async (id)=>{
+      <div className="booking-grid">
 
-await axios.delete(`https://campusride-1.onrender.com/api/bikes/api/bookings/${id}`);
+        {bookings.map((b) => (
+          <div className="booking-card" key={b._id}>
 
-alert("Booking deleted");
+            <h2>{b.bikeName}</h2>
 
-getBookings();
+            <p><b>Email:</b> {b.renterEmail}</p>
 
-};
+            <p><b>Date:</b> {new Date(b.date).toLocaleDateString()}</p>
 
-return(
+            <button
+              className="delete-btn"
+              onClick={() => deleteBooking(b._id)}
+            >
+              Delete Booking
+            </button>
 
-<div className="booking-container">
+          </div>
+        ))}
 
-<h1>My Bookings</h1>
+      </div>
 
-<div className="booking-grid">
-
-{bookings.map((b)=>(
-
-<div className="booking-card" key={b._id}>
-
-<img
-src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png"
-className="bike-img" alt="bike"
-/>
-
-<h2>{b.bikeName}</h2>
-
-<p><b>Email:</b> {b.renterEmail}</p>
-
-<p><b>Date:</b> {new Date(b.date).toLocaleDateString()}</p>
-
-<button
-className="delete-btn"
-onClick={()=>deleteBooking(b._id)}
->
-Delete Booking
-</button>
-
-</div>
-
-))}
-
-</div>
-
-</div>
-
-);
-
+    </div>
+  );
 }
 
-export default Bookingpage;
+export default BookingPage;

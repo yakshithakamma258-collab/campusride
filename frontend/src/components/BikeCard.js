@@ -1,33 +1,24 @@
 import "../style.css";
 
-function BikeCard({bike,onBook}){
+function BikeCard({ bike, onBook }) {
+  return (
+    <div className="bike-card">
 
-return(
+      <h3>{bike.name}</h3>
 
-<div className="bike-card">
+      <p><b>Brand:</b> {bike.brand}</p>
 
-<img
-src={bike.image || "https://cdn-icons-png.flaticon.com/512/2972/2972185.png"}
-className="bike-img" alt="bike"
-/>
+      <p><b>Price:</b> ₹{bike.price}</p>
 
-<h3>{bike.name}</h3>
+      <button
+        className="book-btn"
+        onClick={() => onBook(bike)}
+      >
+        Book Bike
+      </button>
 
-<p><b>Brand:</b> {bike.brand}</p>
-
-<p><b>Price:</b> ₹{bike.price}</p>
-
-<button
-className="book-btn"
-onClick={()=>onBook(bike)}
->
-Book Bike
-</button>
-
-</div>
-
-);
-
+    </div>
+  );
 }
 
 export default BikeCard;
