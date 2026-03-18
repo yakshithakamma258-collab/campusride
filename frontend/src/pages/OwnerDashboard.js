@@ -12,7 +12,7 @@ const addBike = async () => {
 
 try{
 
-await axios.post("http://localhost:5000/api/bikes/add",{
+await axios.post("https://campusride-1.onrender.com/api/bikes",{
 
 name,
 brand,

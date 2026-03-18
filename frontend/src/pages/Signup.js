@@ -14,7 +14,7 @@ const signup = async ()=>{
 
 try{
 
-await axios.post("http://localhost:5000/api/auth/signup",{
+await axios.post("https://campusride-1.onrender.com/api/bikes",{
 name,email,password,role
 });
 

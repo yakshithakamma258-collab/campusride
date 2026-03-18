@@ -16,7 +16,7 @@ const getBikes = async ()=>{
 
 try{
 
-const res = await axios.get("http://localhost:5000/api/bikes");
+const res = await axios.get("https://campusride-1.onrender.com/api/bikes");
 
 setBikes(res.data);
 

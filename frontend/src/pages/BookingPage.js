@@ -12,7 +12,7 @@ getBookings();
 
 const getBookings = async ()=>{
 
-const res = await axios.get("http://localhost:5000/api/bookings");
+const res = await axios.get("https://campusride-1.onrender.com/api/bikes");
 
 setBookings(res.data);
 
@@ -20,7 +20,7 @@ setBookings(res.data);
 
 const deleteBooking = async (id)=>{
 
-await axios.delete(`http://localhost:5000/api/bookings/${id}`);
+await axios.delete(`https://campusride-1.onrender.com/api/bikes/api/bookings/${id}`);
 
 alert("Booking deleted");
 
