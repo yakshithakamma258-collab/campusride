@@ -8,7 +8,7 @@ return(
 
 <img
 src={bike.image || "https://cdn-icons-png.flaticon.com/512/2972/2972185.png"}
-className="bike-img"
+className="bike-img" alt="bike"
 />
 
 <h3>{bike.name}</h3>

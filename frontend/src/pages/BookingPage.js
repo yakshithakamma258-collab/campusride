@@ -2,7 +2,7 @@ import { useEffect,useState } from "react";
 import axios from "axios";
 import "../style.css";
 
-function BookingPage(){
+function Bookingpage(){
 
 const [bookings,setBookings] = useState([]);
 
@@ -42,7 +42,7 @@ return(
 
 <img
 src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png"
-className="bike-img"
+className="bike-img" alt="bike"
 />
 
 <h2>{b.bikeName}</h2>
@@ -70,4 +70,4 @@ Delete Booking
 
 }
 
-export default BookingPage;
+export default Bookingpage;
