@@ -1,60 +1,61 @@
 import { useState } from "react";
 import axios from "axios";
-import { FaUserPlus } from "react-icons/fa";
-import "./../App.css";
 
 function Signup(){
 
-const [name,setName]=useState("");
-const [email,setEmail]=useState("");
-const [password,setPassword]=useState("");
-const [role,setRole]=useState("renter");
+const [name,setName] = useState("");
+const [email,setEmail] = useState("");
+const [password,setPassword] = useState("");
+const [role,setRole] = useState("renter");
 
-const signup = async ()=>{
+const signup = async () => {
 
 try{
 
-await axios.post("https://campusride-1.onrender.com/api/bikes",{
-name,email,password,role
-});
+await axios.post(
+"https://campusride-1.onrender.com/api/auth/signup",
+{
+name,
+email,
+password,
+role
+}
+);
 
 alert("Account created successfully");
+window.location.href="/";
 
 }catch(err){
-alert(err.response?.data?.message || "Signup failed");
+alert("Signup failed");
+console.log(err);
 }
 
 };
 
 return(
 
-<div className="container">
+<div>
 
-<div className="container-box col-md-4 mx-auto text-center">
+<h1>Signup</h1>
 
-<h2 className="dashboard-title"><FaUserPlus/> Signup</h2>
+<input placeholder="Name" onChange={(e)=>setName(e.target.value)} />
+<br/><br/>
 
-<input className="form-control" placeholder="Name" onChange={(e)=>setName(e.target.value)}/>
-<br/>
+<input placeholder="Email" onChange={(e)=>setEmail(e.target.value)} />
+<br/><br/>
 
-<input className="form-control" placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
-<br/>
+<input placeholder="Password" type="password"
+onChange={(e)=>setPassword(e.target.value)} />
+<br/><br/>
 
-<input className="form-control" placeholder="Password" type="password" onChange={(e)=>setPassword(e.target.value)}/>
-<br/>
-
-<select className="form-control" onChange={(e)=>setRole(e.target.value)}>
+<select onChange={(e)=>setRole(e.target.value)}>
 <option value="owner">Owner</option>
 <option value="renter">Renter</option>
 </select>
 
-<br/>
+<br/><br/>
 
-<button className="btn btn-primary w-100" onClick={signup}>
-Create Account
-</button>
-
-</div>
+<button onClick={signup}>Create Account</button>
 
 </div>
 
