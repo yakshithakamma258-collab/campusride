@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import RenterDashboard from "./pages/RenterDashboard";
-import BookingPage from "./pages/BookingPage";
+import BookingPage from ". /pages/BookingPage";
 
 import "./style.css";
 
