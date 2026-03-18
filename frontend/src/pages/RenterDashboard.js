@@ -33,7 +33,7 @@ const bookBike = async (bike)=>{
 
 try{
 
-await axios.post("http://localhost:5000/api/bookings/book",{
+await axios.post("https://campusride-1.onrender.com/api/bookings/book",{
 
 bikeId: bike._id,
 bikeName: bike.name,
