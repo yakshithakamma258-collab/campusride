@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "../style.css";
 
-function Bookingpage() {
+function BookingPage() {
 
   const [bookings, setBookings] = useState([]);
 
@@ -63,4 +63,4 @@ function Bookingpage() {
   );
 }
 
-export default Bookingpage;
+export default BookingPage;
