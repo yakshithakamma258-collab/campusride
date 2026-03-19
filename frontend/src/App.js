@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import RenterDashboard from "./pages/RenterDashboard";
-import BookingPage from "./pages/BookingPage";
+import Bookingpage from "./pages/Bookingpage";
 
 import "./style.css";
 
@@ -24,7 +24,7 @@ return(
 
 <Route path="/renter" element={<RenterDashboard/>} />
 
-<Route path="/bookings" element={<BookingPage/>} />
+<Route path="/bookings" element={<Bookingpage/>} />
 
 </Routes>
 
